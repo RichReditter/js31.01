@@ -42,25 +42,29 @@
 // Задача 1
 // Описать объект, представляющий треугольник. Предусмотреть методы для создания объектов, вычисления площади и периметра
 
-function Triangle( firstSide, secondSide, thirdSide){
-    this.firstSide = firstSide;
-    this.secondSide = secondSide;
-    this.thirdSide = thirdSide;
+// function Triangle( firstSide, secondSide, thirdSide){
+//     this.firstSide = firstSide;
+//     this.secondSide = secondSide;
+//     this.thirdSide = thirdSide;
 
-    this.perimeter = function(){
-        return firstSide + secondSide + thirdSide;
-    }
-    this.area = function(){
-        return 0.5*(firstSide + secondSide)
-    }
-}
+//     this.perimeter = function(){
+//         return firstSide + secondSide + thirdSide;
+//     }
+//     this.pperimeter = function(){
+//         return perimeter / 2
+//     }
+//     this.area = function(){
+//         return Math.sqrt(pperimeter*(pperimeter - firstSide)*(pperimeter - secondSide)* ( pperimeter - thirdSide) )
+//     }
+// }
 
 
-const triangle = new Triangle( 3, 4, 5 )
-const perimeter = triangle.perimeter()
-const area = triangle.area()
-console.log(perimeter)
-console.log(area)
+// const triangle = new Triangle( 3, 4, 5 )
+// const perimeter = triangle.perimeter()
+// const area = triangle.area()
+
+// console.log('Периметр треугольника равен: ',perimeter)
+// console.log('Площадь треугольника равна: ',area)
 
 
 
@@ -77,14 +81,7 @@ function Train(town, number, departure){
     this.number = number;
     this.departure = departure;
     
-    this.print = function(n){
-        for (let number in trains){
-            if (Train[number] === n){
-                neededNumber = Train[number];
-            }
-            
-        }
-    }
+    
 
     this.print = function (r){
         return this.number.every( r => number = r);
@@ -103,53 +100,72 @@ const train8 = new Train( 'Kobrin', 1, 2300)
 
 const trains = [train1, train2, train3, train4, train5, train6, train7, train8]
 
-const sortedNumbers = trains.sort((a,b) => {
-    if( a.number > b.number ){
+// const sortedNumbers = trains.sort((a,b) => {
+//     if( a.number > b.number ){
+//         return 1
+//     }
+//     else if( a.number < b.number ){
+//         return -1
+//     }
+//     else ( a.number = b.number);{
+//         return 0
+//     }
+// });
+
+// console.log('Поезда, отсортированные по номерам ',sortedNumbers)
+// const enteredNumber = +prompt('Введите номер поезда')
+
+// const filteredTrains = trains.filter( train => enteredNumber === train['number'] )
+// console.log('Вот ваши поезда по запросу: \n',enteredNumber,filteredTrains)
+
+// const sortedTowns = trains.sort( (a,b)=>{
+//     if( a.town > b.town){
+//         return 1
+//     }
+//     else if( a.town < b.town ){
+//         return -1
+//     }
+//     else ( a.town = b.town);{
+//         return 0
+//     }
+// })
+
+// console.log(sortedTowns)
+
+// const sortedTowns2 = sortedTowns.sort( ( a,b ) => {
+//     if ( a['town'] === b['town']){
+//         if( a['departure'] > b['departure'] ){
+//             return 1
+//         }
+//         else if( a['departure'] < b['departure'] ){
+//             return -1
+//         }
+//         else ( a['departure'] === b['departure'] );{
+//             return 0
+//         }
+//     }
+//     else{
+//         console.log('Совпадающих по месту прибытия поездов нет...\n',sortedTowns)
+//     }
+// });
+// console.log(sortedTowns2)
+
+
+const sortedNumbers = trains.sort( (a,b) => a.number - b.number)
+console.log(sortedNumbers)
+const requestedNumber = 2;
+const requestedTrain = trains.find( (e) => 
+    e.number = requestedNumber
+)
+console.log(requestedTrain)
+
+const sortedByDestination = trains.sort( (t1,t2) => {
+    if ( t1.town > t2.town){
         return 1
     }
-    else if( a.number < b.number ){
+    else if (t1.town < t2.town){
         return -1
     }
-    else ( a.number = b.number);{
-        return 0
-    }
-});
-
-
-const enteredNumber = +prompt('Введите номер поезда')
-
-const filteredTrains = trains.filter( train => enteredNumber === train['number'] )
-console.log('Вот ваши поезда по запросу: \n',enteredNumber,filteredTrains)
-
-const sortedTowns = trains.sort( (a,b)=>{
-    if( a.town > b.town){
-        return 1
-    }
-    else if( a.town < b.town ){
-        return -1
-    }
-    else ( a.town = b.town);{
-        return 0
-    }
+    return 0
 })
-
-console.log(sortedTowns)
-
-const sortedTowns2 = sortedTowns.sort( ( a,b ) => {
-    if ( a['town'] === b['town']){
-        if( a['departure'] > b['departure'] ){
-            return 1
-        }
-        else if( a['departure'] < b['departure'] ){
-            return -1
-        }
-        else ( a['departure'] === b['departure'] );{
-            return 0
-        }
-    }
-    else{
-        console.log('Совпадающих по месту прибытия поездов нет...\n',sortedTowns)
-    }
-});
-console.log(sortedTowns2)
-
+console.log(sortedByDestination)
